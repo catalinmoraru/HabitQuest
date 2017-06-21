@@ -52,6 +52,14 @@ export default class DataService {
             });
     }
 
+    getUserQuests(userId) {
+        var myQuests = { "gold" : 10, "silver" : 15 };
+        return this.convertJSONToPromise(myQuests);
+    }
+
+    convertJSONToPromise(jsonInput) {
+        return this.$q.when(jsonInput);
+    }
 
     getPostComments(postId) {
         return this.$http.get(this.apiUrl + "/comments", {params: {postId: postId}}).then(DataService.getComplete)
